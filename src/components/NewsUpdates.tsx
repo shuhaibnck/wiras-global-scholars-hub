@@ -2,6 +2,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, ArrowRight, Bell, Globe, Award, Newspaper } from "lucide-react";
+import news1Thumb from "@/assets/thumbnails/news-1.jpg";
+import news2Thumb from "@/assets/thumbnails/news-2.jpg";
+import news3Thumb from "@/assets/thumbnails/news-3.jpg";
+import news4Thumb from "@/assets/thumbnails/news-4.jpg";
 
 const NewsUpdates = () => {
   const news = [
@@ -13,7 +17,8 @@ const NewsUpdates = () => {
       date: "January 14, 2025",
       time: "2 hours ago",
       featured: true,
-      icon: Award
+      icon: Award,
+      thumbnail: news1Thumb
     },
     {
       id: 2,
@@ -22,7 +27,8 @@ const NewsUpdates = () => {
       category: "Partnership",
       date: "January 13, 2025",
       time: "1 day ago",
-      icon: Globe
+      icon: Globe,
+      thumbnail: news2Thumb
     },
     {
       id: 3,
@@ -31,7 +37,8 @@ const NewsUpdates = () => {
       category: "Research",
       date: "January 12, 2025",
       time: "2 days ago",
-      icon: Bell
+      icon: Bell,
+      thumbnail: news3Thumb
     },
     {
       id: 4,
@@ -40,7 +47,8 @@ const NewsUpdates = () => {
       category: "Technology",
       date: "January 11, 2025",
       time: "3 days ago",
-      icon: Newspaper
+      icon: Newspaper,
+      thumbnail: news4Thumb
     },
     {
       id: 5,
@@ -104,8 +112,18 @@ const NewsUpdates = () => {
             {featuredNews && (
               <div className="mb-8">
                 <Card className="shadow-elegant border-0 bg-gradient-to-r from-wiras-gold/10 to-accent/20 overflow-hidden">
-                  <CardContent className="p-8">
-                    <div className="flex items-center gap-3 mb-4">
+                  <CardContent className="p-0">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                      <div className="relative h-64 lg:h-auto">
+                        <img 
+                          src={featuredNews.thumbnail} 
+                          alt={featuredNews.title}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                      </div>
+                      <div className="p-8 flex flex-col justify-center">
+                        <div className="flex items-center gap-3 mb-4">
                       <Badge className="bg-wiras-gold text-wiras-navy">Breaking News</Badge>
                       <Badge variant="outline">{featuredNews.category}</Badge>
                     </div>
@@ -125,12 +143,14 @@ const NewsUpdates = () => {
                           <Clock className="h-4 w-4" />
                           <span>{featuredNews.time}</span>
                         </div>
+                        </div>
+                        <Button className="bg-wiras-primary hover:bg-wiras-primary/90 text-white">
+                          Read Full Story
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
                       </div>
-                      <Button className="bg-wiras-primary hover:bg-wiras-primary/90 text-white">
-                        Read Full Story
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
                     </div>
+                  </div>
                   </CardContent>
                 </Card>
               </div>
@@ -139,38 +159,47 @@ const NewsUpdates = () => {
             {/* Other News */}
             <div className="space-y-6">
               {otherNews.map(item => (
-                <Card key={item.id} className="shadow-card border-0 bg-card hover:shadow-elegant transition-all duration-300 group">
-                  <CardContent className="p-6">
-                    <div className="flex gap-4">
-                      <div className="flex-shrink-0">
-                        <div className="w-12 h-12 bg-wiras-light-green rounded-lg flex items-center justify-center">
-                          <item.icon className="h-6 w-6 text-wiras-secondary" />
-                        </div>
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-2">
-                          <Badge variant="outline" className="text-xs">{item.category}</Badge>
-                          <span className="text-xs text-muted-foreground">{item.time}</span>
-                        </div>
-                        <h4 className="text-lg font-bold mb-2 text-foreground group-hover:text-wiras-primary transition-colors">
-                          {item.title}
-                        </h4>
-                        <p className="text-muted-foreground text-sm leading-relaxed mb-3">
-                          {item.excerpt}
-                        </p>
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center space-x-2 text-xs text-muted-foreground">
-                            <Calendar className="h-3 w-3" />
-                            <span>{item.date}</span>
-                          </div>
-                          <Button variant="ghost" size="sm" className="text-wiras-primary hover:text-wiras-primary">
-                            Read More
-                            <ArrowRight className="ml-1 h-3 w-3" />
-                          </Button>
-                        </div>
-                      </div>
+                <Card key={item.id} className="shadow-card border-0 bg-card hover:shadow-elegant transition-all duration-300 group overflow-hidden">
+                  <div className="flex">
+                    <div className="relative w-32 h-24 flex-shrink-0">
+                      <img 
+                        src={item.thumbnail} 
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
-                  </CardContent>
+                    <CardContent className="p-4 flex-1">
+                      <div className="flex gap-4">
+                        <div className="flex-shrink-0">
+                          <div className="w-8 h-8 bg-wiras-light-green rounded-lg flex items-center justify-center">
+                            <item.icon className="h-4 w-4 text-wiras-secondary" />
+                          </div>
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Badge variant="outline" className="text-xs">{item.category}</Badge>
+                            <span className="text-xs text-muted-foreground">{item.time}</span>
+                          </div>
+                          <h4 className="text-lg font-bold mb-2 text-foreground group-hover:text-wiras-primary transition-colors">
+                            {item.title}
+                          </h4>
+                          <p className="text-muted-foreground text-sm leading-relaxed mb-3">
+                            {item.excerpt}
+                          </p>
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center space-x-2 text-xs text-muted-foreground">
+                              <Calendar className="h-3 w-3" />
+                              <span>{item.date}</span>
+                            </div>
+                            <Button variant="ghost" size="sm" className="text-wiras-primary hover:text-wiras-primary">
+                              Read More
+                              <ArrowRight className="ml-1 h-3 w-3" />
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </div>
                 </Card>
               ))}
             </div>

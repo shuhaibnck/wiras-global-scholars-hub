@@ -2,6 +2,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, MapPin, Users, ExternalLink } from "lucide-react";
+import event1Thumb from "@/assets/thumbnails/event-1.jpg";
+import event2Thumb from "@/assets/thumbnails/event-2.jpg";
+import event3Thumb from "@/assets/thumbnails/event-3.jpg";
+import event4Thumb from "@/assets/thumbnails/event-4.jpg";
 
 const Events = () => {
   const events = [
@@ -15,7 +19,8 @@ const Events = () => {
       type: "Conference",
       status: "upcoming",
       attendees: "500+",
-      featured: true
+      featured: true,
+      thumbnail: event1Thumb
     },
     {
       id: 2,
@@ -26,7 +31,8 @@ const Events = () => {
       location: "Knowledge City Conference Hall",
       type: "Academic",
       status: "upcoming",
-      attendees: "200+"
+      attendees: "200+",
+      thumbnail: event2Thumb
     },
     {
       id: 3,
@@ -37,7 +43,8 @@ const Events = () => {
       location: "Digital Lab, Building A",
       type: "Workshop",
       status: "upcoming",
-      attendees: "50+"
+      attendees: "50+",
+      thumbnail: event3Thumb
     },
     {
       id: 4,
@@ -48,7 +55,8 @@ const Events = () => {
       location: "WIRAS Community Center",
       type: "Dialogue",
       status: "upcoming",
-      attendees: "150+"
+      attendees: "150+",
+      thumbnail: event4Thumb
     },
     {
       id: 5,
@@ -88,9 +96,17 @@ const Events = () => {
         {featuredEvent && (
           <div className="mb-12">
             <Card className="shadow-elegant border-0 bg-gradient-to-r from-wiras-secondary/10 to-wiras-primary/5 overflow-hidden">
-              <CardContent className="p-8 md:p-12">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-                  <div className="lg:col-span-2">
+              <CardContent className="p-0">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                  <div className="relative h-64 lg:h-auto">
+                    <img 
+                      src={featuredEvent.thumbnail} 
+                      alt={featuredEvent.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                  </div>
+                  <div className="p-8 md:p-12 flex flex-col justify-center">
                     <div className="flex items-center gap-3 mb-4">
                       <Badge className="bg-wiras-gold text-wiras-navy">Featured Event</Badge>
                       <Badge variant="outline">{featuredEvent.type}</Badge>
@@ -119,15 +135,15 @@ const Events = () => {
                         <span className="text-sm">{featuredEvent.attendees} Expected</span>
                       </div>
                     </div>
-                  </div>
-                  <div className="flex flex-col space-y-4">
-                    <Button size="lg" className="bg-wiras-primary hover:bg-wiras-primary/90 text-white">
-                      Register Now
-                      <ExternalLink className="ml-2 h-4 w-4" />
-                    </Button>
-                    <Button variant="outline" size="lg" className="border-wiras-primary text-wiras-primary hover:bg-wiras-primary hover:text-white">
-                      Learn More
-                    </Button>
+                    <div className="flex flex-col space-y-4">
+                      <Button size="lg" className="bg-wiras-primary hover:bg-wiras-primary/90 text-white">
+                        Register Now
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      </Button>
+                      <Button variant="outline" size="lg" className="border-wiras-primary text-wiras-primary hover:bg-wiras-primary hover:text-white">
+                        Learn More
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </CardContent>
@@ -138,12 +154,21 @@ const Events = () => {
         {/* Other Events Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {otherEvents.map(event => (
-            <Card key={event.id} className="shadow-card border-0 bg-card hover:shadow-elegant transition-all duration-300 group">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <Badge variant="outline">{event.type}</Badge>
-                  <span className="text-xs text-muted-foreground">{event.attendees}</span>
+            <Card key={event.id} className="shadow-card border-0 bg-card hover:shadow-elegant transition-all duration-300 group overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={event.thumbnail} 
+                  alt={event.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-4 left-4">
+                  <Badge variant="outline" className="text-xs bg-white/90 backdrop-blur-sm">{event.type}</Badge>
                 </div>
+                <div className="absolute top-4 right-4">
+                  <span className="text-xs text-white bg-black/50 px-2 py-1 rounded backdrop-blur-sm">{event.attendees}</span>
+                </div>
+              </div>
+              <CardContent className="p-6">
                 <h4 className="text-xl font-bold mb-3 text-foreground group-hover:text-wiras-primary transition-colors">
                   {event.title}
                 </h4>

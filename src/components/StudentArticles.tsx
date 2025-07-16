@@ -2,6 +2,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, User, BookOpen, ArrowRight } from "lucide-react";
+import article1Thumb from "@/assets/thumbnails/article-1.jpg";
+import article2Thumb from "@/assets/thumbnails/article-2.jpg";
+import article3Thumb from "@/assets/thumbnails/article-3.jpg";
+import article4Thumb from "@/assets/thumbnails/article-4.jpg";
 
 const StudentArticles = () => {
   const articles = [
@@ -14,7 +18,8 @@ const StudentArticles = () => {
       date: "January 12, 2025",
       readTime: "8 min read",
       category: "Research",
-      featured: true
+      featured: true,
+      thumbnail: article1Thumb
     },
     {
       id: 2,
@@ -24,7 +29,8 @@ const StudentArticles = () => {
       department: "Islamic Law",
       date: "January 10, 2025",
       readTime: "6 min read",
-      category: "Academic"
+      category: "Academic",
+      thumbnail: article2Thumb
     },
     {
       id: 3,
@@ -34,7 +40,8 @@ const StudentArticles = () => {
       department: "Digital Humanities",
       date: "January 8, 2025",
       readTime: "5 min read",
-      category: "Technology"
+      category: "Technology",
+      thumbnail: article3Thumb
     },
     {
       id: 4,
@@ -44,7 +51,8 @@ const StudentArticles = () => {
       department: "Philosophy",
       date: "January 5, 2025",
       readTime: "12 min read",
-      category: "Philosophy"
+      category: "Philosophy",
+      thumbnail: article4Thumb
     }
   ];
 
@@ -69,9 +77,17 @@ const StudentArticles = () => {
         <div className="mb-12">
           {articles.filter(article => article.featured).map(article => (
             <Card key={article.id} className="shadow-elegant border-0 bg-gradient-to-r from-wiras-light-green/30 to-accent/30 overflow-hidden">
-              <CardContent className="p-8 md:p-12">
-                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-                  <div className="flex-1">
+              <CardContent className="p-0">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                  <div className="relative h-64 lg:h-auto">
+                    <img 
+                      src={article.thumbnail} 
+                      alt={article.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                  </div>
+                  <div className="p-8 md:p-12 flex flex-col justify-center">
                     <div className="flex items-center gap-3 mb-4">
                       <Badge className="bg-wiras-gold text-wiras-navy">Featured</Badge>
                       <Badge variant="outline">{article.category}</Badge>
@@ -110,11 +126,18 @@ const StudentArticles = () => {
         {/* Other Articles Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {articles.filter(article => !article.featured).map(article => (
-            <Card key={article.id} className="shadow-card border-0 bg-card hover:shadow-elegant transition-all duration-300 group">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-2 mb-4">
-                  <Badge variant="outline" className="text-xs">{article.category}</Badge>
+            <Card key={article.id} className="shadow-card border-0 bg-card hover:shadow-elegant transition-all duration-300 group overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={article.thumbnail} 
+                  alt={article.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-4 left-4">
+                  <Badge variant="outline" className="text-xs bg-white/90 backdrop-blur-sm">{article.category}</Badge>
                 </div>
+              </div>
+              <CardContent className="p-6">
                 <h4 className="text-xl font-bold mb-3 text-foreground group-hover:text-wiras-primary transition-colors">
                   {article.title}
                 </h4>
