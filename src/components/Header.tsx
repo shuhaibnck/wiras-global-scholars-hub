@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header className="bg-background border-b border-border sticky top-0 z-50 backdrop-blur-sm bg-background/95">
       {/* Top notification bar */}
-      <div className="bg-wiras-primary text-wiras-secondary py-2 px-4 text-sm text-center">
+      <div className="bg-wiras-navy text-white py-2 px-4 text-sm text-center">
         <span>World Institute For Research In Advanced Sciences • An autonomous institution under Jamia Markaz</span>
       </div>
       
