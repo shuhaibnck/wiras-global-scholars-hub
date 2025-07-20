@@ -76,7 +76,7 @@ const Events = () => {
   const otherEvents = upcomingEvents.filter(event => !event.featured);
 
   return (
-    <section className="py-20 bg-wiras-light-green/20">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">

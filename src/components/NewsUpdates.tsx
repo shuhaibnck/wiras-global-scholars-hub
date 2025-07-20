@@ -89,7 +89,7 @@ const NewsUpdates = () => {
   const otherNews = news.filter(item => !item.featured);
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-secondary/20">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
