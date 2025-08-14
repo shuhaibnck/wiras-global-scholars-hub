@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WIRAS - World Institute For Research In Advanced Sciences</title>
+    <meta name="description" content="An autonomous Islamic institution fostering excellence in scholarship and modern academic research since 2018. Located in Markaz Knowledge City, South India.">
+    <meta name="author" content="WIRAS">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="WIRAS - World Institute For Research In Advanced Sciences">
+    <meta property="og:description" content="An autonomous Islamic institution fostering excellence in scholarship and modern academic research since 2018. Located in Markaz Knowledge City, South India.">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Design System - Custom CSS Variables */
+        :root {
+            --background: 0 0% 98%;
+            --foreground: 0 0% 8%;
+            --card: 0 0% 100%;
+            --card-foreground: 0 0% 8%;
+            --popover: 0 0% 100%;
+            --popover-foreground: 0 0% 8%;
+            --primary: 0 0% 8%;
+            --primary-foreground: 0 0% 98%;
+            --secondary: 43 25% 85%;
+            --secondary-foreground: 0 0% 8%;
+            --muted: 210 40% 96%;
+            --muted-foreground: 215 16% 47%;
+            --accent: 210 40% 96%;
+            --accent-foreground: 0 0% 8%;
+            --destructive: 0 84.2% 60.2%;
+            --destructive-foreground: 0 0% 98%;
+            --border: 214 32% 91%;
+            --input: 214 32% 91%;
+            --ring: 0 0% 8%;
+            
+            /* WIRAS Brand Colors */
+            --wiras-primary: 0 0% 8%;
+            --wiras-secondary: 43 25% 85%;
+            --wiras-gold: 183 77% 34%;
+            --wiras-light-green: 146 30% 92%;
+            --wiras-navy: 217 32% 11%;
+            --wiras-crimson: 0 75% 42%;
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, hsl(var(--wiras-navy)), hsl(var(--wiras-primary)));
+            --gradient-hero: linear-gradient(135deg, hsl(var(--wiras-navy)) 0%, hsl(var(--wiras-primary)) 100%);
+            --gradient-accent: linear-gradient(45deg, hsl(var(--wiras-gold)), hsl(var(--accent)));
+            
+            /* Shadows */
+            --shadow-elegant: 0 20px 40px -12px hsl(var(--wiras-primary) / 0.15);
+            --shadow-card: 0 4px 20px -4px hsl(var(--wiras-primary) / 0.08);
+            
+            /* Transitions */
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            --radius: 0.5rem;
+        }
+        
+        .dark {
+            --background: 0 0% 8%;
+            --foreground: 0 0% 98%;
+            --card: 0 0% 11%;
+            --card-foreground: 0 0% 98%;
+            --popover: 0 0% 11%;
+            --popover-foreground: 0 0% 98%;
+            --primary: 0 0% 98%;
+            --primary-foreground: 0 0% 8%;
+            --secondary: 217 32% 15%;
+            --secondary-foreground: 0 0% 98%;
+            --muted: 217 32% 15%;
+            --muted-foreground: 215 20% 65%;
+            --accent: 217 32% 15%;
+            --accent-foreground: 0 0% 98%;
+            --destructive: 0 62.8% 30.6%;
+            --destructive-foreground: 0 0% 98%;
+            --border: 217 32% 15%;
+            --input: 217 32% 15%;
+            --ring: 212.7 26.8% 83.9%;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+        }
+        
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .bg-wiras-navy { background-color: hsl(var(--wiras-navy)); }
+        .bg-wiras-primary { background-color: hsl(var(--wiras-primary)); }
+        .bg-wiras-secondary { background-color: hsl(var(--wiras-secondary)); }
+        .bg-wiras-gold { background-color: hsl(var(--wiras-gold)); }
+        .bg-wiras-light-green { background-color: hsl(var(--wiras-light-green)); }
+        .text-wiras-navy { color: hsl(var(--wiras-navy)); }
+        .text-wiras-primary { color: hsl(var(--wiras-primary)); }
+        .text-wiras-secondary { color: hsl(var(--wiras-secondary)); }
+        .text-wiras-gold { color: hsl(var(--wiras-gold)); }
+        .border-wiras-gold { border-color: hsl(var(--wiras-gold)); }
+        .border-wiras-primary { border-color: hsl(var(--wiras-primary)); }
+        
+        .card { 
+            background-color: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: calc(var(--radius));
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            border-radius: calc(var(--radius) * 0.75);
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+        }
+        
+        .badge-secondary {
+            background-color: hsl(var(--secondary));
+            color: hsl(var(--secondary-foreground));
+        }
+        
+        .badge-outline {
+            border: 1px solid hsl(var(--border));
+            background-color: transparent;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: calc(var(--radius));
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            padding: 0.5rem 1rem;
+        }
+        
+        .btn-primary {
+            background-color: hsl(var(--wiras-primary));
+            color: hsl(var(--primary-foreground));
+        }
+        
+        .btn-primary:hover {
+            background-color: hsl(var(--wiras-primary) / 0.9);
+        }
+        
+        .btn-outline {
+            border: 1px solid hsl(var(--border));
+            background-color: transparent;
+            color: hsl(var(--foreground));
+        }
+        
+        .btn-outline:hover {
+            background-color: hsl(var(--accent));
+        }
+        
+        .btn-ghost {
+            background-color: transparent;
+            color: hsl(var(--foreground));
+        }
+        
+        .btn-ghost:hover {
+            background-color: hsl(var(--accent));
+        }
+        
+        .shadow-elegant {
+            box-shadow: var(--shadow-elegant);
+        }
+        
+        .shadow-card {
+            box-shadow: var(--shadow-card);
+        }
+        
+        .transition-smooth {
+            transition: var(--transition-smooth);
+        }
+        
+        /* SVG Icons */
+        .icon {
+            width: 1rem;
+            height: 1rem;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        .icon-lg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        
+        .icon-xl {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        
+        /* Custom animations */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        /* Hover effects */
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+        
+        .group:hover .group-hover-scale {
+            transform: scale(1.05);
+        }
+        
+        /* Responsive utilities */
+        @media (max-width: 768px) {
+            .hidden-mobile {
+                display: none;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .hidden-desktop {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white border-b sticky top-0 z-50 backdrop-blur-sm bg-white/95">
+        <!-- Top notification bar -->
+        <div class="bg-wiras-navy text-white py-2 px-4 text-sm text-center">
+            <span>World Institute For Research In Advanced Sciences • An autonomous institution under Jamia Markaz</span>
+        </div>
+        
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo and main nav -->
+                <div class="flex items-center space-x-12">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-wiras-primary rounded-full flex items-center justify-center">
+                            <span class="text-wiras-secondary font-bold text-lg">W</span>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-serif font-bold text-wiras-primary">WIRAS</div>
+                            <div class="text-xs text-gray-500 uppercase tracking-wider">University</div>
+                        </div>
+                    </div>
+                    
+                    <nav class="hidden lg:flex space-x-8">
+                        <a href="#about" class="flex items-center text-gray-700 hover:text-wiras-primary transition-colors font-medium py-2">
+                            About
+                            <svg class="ml-1 icon">
+                                <path d="m6 9 6 6 6-6"/>
+                            </svg>
+                        </a>
+                        <a href="#academics" class="flex items-center text-gray-700 hover:text-wiras-primary transition-colors font-medium py-2">
+                            Academics
+                            <svg class="ml-1 icon">
+                                <path d="m6 9 6 6 6-6"/>
+                            </svg>
+                        </a>
+                        <a href="#research" class="flex items-center text-gray-700 hover:text-wiras-primary transition-colors font-medium py-2">
+                            Research
+                            <svg class="ml-1 icon">
+                                <path d="m6 9 6 6 6-6"/>
+                            </svg>
+                        </a>
+                        <a href="#campus" class="text-gray-700 hover:text-wiras-primary transition-colors font-medium py-2">Campus</a>
+                        <a href="#admissions" class="text-gray-700 hover:text-wiras-primary transition-colors font-medium py-2">Admissions</a>
+                    </nav>
+                </div>
+                
+                <!-- Right side actions -->
+                <div class="flex items-center space-x-4">
+                    <button class="btn btn-ghost hidden-mobile">
+                        <svg class="icon">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                        </svg>
+                    </button>
+                    <a href="#apply" class="btn btn-primary hidden-mobile bg-wiras-primary hover:bg-wiras-primary/90 text-wiras-secondary font-medium">Apply Now</a>
+                    <button class="btn btn-ghost lg:hidden">
+                        <svg class="icon-xl">
+                            <line x1="4" x2="20" y1="12" y2="12"/>
+                            <line x1="4" x2="20" y1="6" y2="6"/>
+                            <line x1="4" x2="20" y1="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="relative min-h-screen flex items-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img src="src/assets/wiras-hero.jpg" alt="Cover Story Background" class="w-full h-full object-cover">
+            <div class="absolute inset-0" style="background: linear-gradient(to right, hsl(var(--wiras-navy) / 0.9), hsl(var(--wiras-primary) / 0.8), hsl(var(--wiras-navy) / 0.7));"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl">
+                <!-- Cover Story Badge -->
+                <div class="inline-flex items-center space-x-2 bg-wiras-gold/20 backdrop-blur-sm rounded-full px-6 py-2 mb-6">
+                    <div class="w-2 h-2 bg-wiras-gold rounded-full animate-pulse"></div>
+                    <span class="text-wiras-gold font-medium text-sm">Latest Cover Story</span>
+                </div>
+                
+                <!-- Title -->
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight font-playfair">
+                    WIRAS Leads Groundbreaking Research in Islamic Sciences Integration
+                </h1>
+                
+                <!-- Caption -->
+                <p class="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed max-w-3xl">
+                    Our latest research initiative bridges traditional Islamic scholarship with contemporary academic methodologies, setting new standards for global Islamic education.
+                </p>
+                
+                <!-- Meta Information -->
+                <div class="flex flex-wrap items-center gap-6 text-white/80 mb-8">
+                    <div class="flex items-center space-x-2">
+                        <svg class="icon">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        <span class="text-sm">Dr. Muhammad Hassan</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <svg class="icon">
+                            <path d="M8 2v4"/>
+                            <path d="M16 2v4"/>
+                            <rect width="18" height="18" x="3" y="4" rx="2"/>
+                            <path d="M3 10h18"/>
+                        </svg>
+                        <span class="text-sm">January 15, 2025</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <svg class="icon">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12,6 12,12 16,14"/>
+                        </svg>
+                        <span class="text-sm">5 min read</span>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#read" class="btn text-lg px-8 py-3 bg-wiras-gold hover:bg-wiras-gold/90 text-wiras-navy font-semibold">Read Full Story</a>
+                    <a href="#explore" class="btn text-lg px-8 py-3 border border-white text-white hover:bg-white hover:text-wiras-navy">Explore More Stories</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Gradient -->
+        <div class="absolute bottom-0 left-0 right-0 h-32" style="background: linear-gradient(to top, hsl(var(--background)), transparent);"></div>
+    </section>
+
+    <!-- Student Articles -->
+    <section class="py-20" style="background-color: hsl(var(--secondary) / 0.3);">
+        <div class="container mx-auto px-4">
+            <!-- Section Header -->
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <span class="badge badge-secondary mb-4">Student Research</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 font-playfair">Student Articles & Research</h2>
+                <p class="text-xl text-gray-600 leading-relaxed">
+                    Discover groundbreaking research and insightful articles by our talented students, 
+                    showcasing the intersection of Islamic scholarship and modern academic inquiry.
+                </p>
+            </div>
+
+            <!-- Featured Article -->
+            <div class="mb-12">
+                <div class="card shadow-elegant border-0 overflow-hidden" style="background: linear-gradient(to right, hsl(var(--wiras-light-green) / 0.3), hsl(var(--accent) / 0.3));">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                        <div class="relative h-64 lg:h-auto">
+                            <img src="src/assets/thumbnails/article-1.jpg" alt="The Role of Technology in Modern Islamic Banking" class="w-full h-full object-cover">
+                            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(0,0,0,0.2), transparent);"></div>
+                        </div>
+                        <div class="p-8 md:p-12 flex flex-col justify-center">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="badge bg-wiras-gold text-wiras-navy">Featured</span>
+                                <span class="badge badge-outline">Research</span>
+                            </div>
+                            <h3 class="text-3xl md:text-4xl font-bold mb-4 text-wiras-primary font-playfair">
+                                The Role of Technology in Modern Islamic Banking
+                            </h3>
+                            <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                                Exploring how blockchain and fintech innovations align with Sharia principles in contemporary banking systems.
+                            </p>
+                            <div class="flex flex-wrap items-center gap-6 text-sm text-gray-500 mb-6">
+                                <div class="flex items-center space-x-2">
+                                    <svg class="icon">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="12" cy="7" r="4"/>
+                                    </svg>
+                                    <span>Ahmed Al-Rashid</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <svg class="icon">
+                                        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H18a2 2 0 0 1 2 2v18l-8-5-8 5Z"/>
+                                    </svg>
+                                    <span>Islamic Finance</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <svg class="icon">
+                                        <path d="M8 2v4"/>
+                                        <path d="M16 2v4"/>
+                                        <rect width="18" height="18" x="3" y="4" rx="2"/>
+                                        <path d="M3 10h18"/>
+                                    </svg>
+                                    <span>January 12, 2025</span>
+                                </div>
+                            </div>
+                            <a href="#read-article" class="btn btn-primary bg-wiras-primary hover:bg-wiras-primary/90 text-white">
+                                Read Article
+                                <svg class="ml-2 icon">
+                                    <path d="M5 12h14"/>
+                                    <path d="m12 5 7 7-7 7"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Articles Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Article 1 -->
+                <div class="card shadow-card border-0 bg-white hover:shadow-elegant transition-all duration-300 group overflow-hidden">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="src/assets/thumbnails/article-2.jpg" alt="Environmental Ethics in Islamic Jurisprudence" class="w-full h-full object-cover group-hover-scale transition-smooth">
+                        <div class="absolute top-4 left-4">
+                            <span class="badge badge-outline text-xs bg-white/90 backdrop-blur-sm">Academic</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-3 group-hover:text-wiras-primary transition-colors">
+                            Environmental Ethics in Islamic Jurisprudence
+                        </h4>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            An analysis of Islamic environmental principles and their application to modern climate change challenges.
+                        </p>
+                        <div class="space-y-2 text-sm text-gray-500 mb-4">
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-3 h-3 icon">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="12" cy="7" r="4"/>
+                                </svg>
+                                <span>Fatima Zahra</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-3 h-3 icon">
+                                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H18a2 2 0 0 1 2 2v18l-8-5-8 5Z"/>
+                                </svg>
+                                <span>Islamic Law</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-3 h-3 icon">
+                                        <path d="M8 2v4"/>
+                                        <path d="M16 2v4"/>
+                                        <rect width="18" height="18" x="3" y="4" rx="2"/>
+                                        <path d="M3 10h18"/>
+                                    </svg>
+                                    <span>January 10, 2025</span>
+                                </div>
+                                <span class="text-xs">6 min read</span>
+                            </div>
+                        </div>
+                        <a href="#read-more" class="btn btn-outline w-full group-hover:bg-wiras-primary group-hover:text-white transition-all">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="card shadow-card border-0 bg-white hover:shadow-elegant transition-all duration-300 group overflow-hidden">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="src/assets/thumbnails/article-3.jpg" alt="Digital Preservation of Islamic Manuscripts" class="w-full h-full object-cover group-hover-scale transition-smooth">
+                        <div class="absolute top-4 left-4">
+                            <span class="badge badge-outline text-xs bg-white/90 backdrop-blur-sm">Technology</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-3 group-hover:text-wiras-primary transition-colors">
+                            Digital Preservation of Islamic Manuscripts
+                        </h4>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Innovative approaches to digitizing and preserving ancient Islamic texts for future generations.
+                        </p>
+                        <div class="space-y-2 text-sm text-gray-500 mb-4">
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-3 h-3 icon">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="12" cy="7" r="4"/>
+                                </svg>
+                                <span>Omar Hassan</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-3 h-3 icon">
+                                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H18a2 2 0 0 1 2 2v18l-8-5-8 5Z"/>
+                                </svg>
+                                <span>Digital Humanities</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-3 h-3 icon">
+                                        <path d="M8 2v4"/>
+                                        <path d="M16 2v4"/>
+                                        <rect width="18" height="18" x="3" y="4" rx="2"/>
+                                        <path d="M3 10h18"/>
+                                    </svg>
+                                    <span>January 8, 2025</span>
+                                </div>
+                                <span class="text-xs">5 min read</span>
+                            </div>
+                        </div>
+                        <a href="#read-more" class="btn btn-outline w-full group-hover:bg-wiras-primary group-hover:text-white transition-all">Read More</a>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="card shadow-card border-0 bg-white hover:shadow-elegant transition-all duration-300 group overflow-hidden">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="src/assets/thumbnails/article-4.jpg" alt="Comparative Study: Islamic and Western Philosophy" class="w-full h-full object-cover group-hover-scale transition-smooth">
+                        <div class="absolute top-4 left-4">
+                            <span class="badge badge-outline text-xs bg-white/90 backdrop-blur-sm">Philosophy</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-3 group-hover:text-wiras-primary transition-colors">
+                            Comparative Study: Islamic and Western Philosophy
+                        </h4>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            A comprehensive analysis of philosophical traditions and their intersection in contemporary thought.
+                        </p>
+                        <div class="space-y-2 text-sm text-gray-500 mb-4">
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-3 h-3 icon">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="12" cy="7" r="4"/>
+                                </svg>
+                                <span>Aisha Mahmoud</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-3 h-3 icon">
+                                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H18a2 2 0 0 1 2 2v18l-8-5-8 5Z"/>
+                                </svg>
+                                <span>Philosophy</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-3 h-3 icon">
+                                        <path d="M8 2v4"/>
+                                        <path d="M16 2v4"/>
+                                        <rect width="18" height="18" x="3" y="4" rx="2"/>
+                                        <path d="M3 10h18"/>
+                                    </svg>
+                                    <span>January 5, 2025</span>
+                                </div>
+                                <span class="text-xs">12 min read</span>
+                            </div>
+                        </div>
+                        <a href="#read-more" class="btn btn-outline w-full group-hover:bg-wiras-primary group-hover:text-white transition-all">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View All Button -->
+            <div class="text-center">
+                <a href="#all-articles" class="btn btn-outline text-lg border-wiras-primary text-wiras-primary hover:bg-wiras-primary hover:text-white">
+                    View All Student Articles
+                    <svg class="ml-2 icon">
+                        <path d="M5 12h14"/>
+                        <path d="m12 5 7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <!-- Section Header -->
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <span class="badge badge-secondary mb-4">Upcoming Events</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 font-playfair">Events & Programs</h2>
+                <p class="text-xl text-gray-600 leading-relaxed">
+                    Join us for enriching academic conferences, workshops, and community gatherings 
+                    that foster learning, research, and intellectual exchange.
+                </p>
+            </div>
+
+            <!-- Featured Event -->
+            <div class="mb-12">
+                <div class="card shadow-elegant border-0 overflow-hidden" style="background: linear-gradient(to right, hsl(var(--wiras-secondary) / 0.1), hsl(var(--wiras-primary) / 0.05));">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                        <div class="relative h-64 lg:h-auto">
+                            <img src="src/assets/thumbnails/event-1.jpg" alt="International Conference on Islamic Finance" class="w-full h-full object-cover">
+                            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);"></div>
+                        </div>
+                        <div class="p-8 md:p-12 flex flex-col justify-center">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="badge bg-wiras-gold text-wiras-navy">Featured Event</span>
+                                <span class="badge badge-outline">Conference</span>
+                            </div>
+                            <h3 class="text-3xl md:text-4xl font-bold mb-4 text-wiras-primary font-playfair">
+                                International Conference on Islamic Finance
+                            </h3>
+                            <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                                A comprehensive three-day conference bringing together scholars, practitioners, and researchers to discuss the latest developments in Islamic finance and banking.
+                            </p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                                <div class="flex items-center space-x-3">
+                                    <svg class="icon-lg text-wiras-secondary">
+                                        <path d="M8 2v4"/>
+                                        <path d="M16 2v4"/>
+                                        <rect width="18" height="18" x="3" y="4" rx="2"/>
+                                        <path d="M3 10h18"/>
+                                    </svg>
+                                    <span class="text-sm font-medium">February 15-17, 2025</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <svg class="icon-lg text-wiras-secondary">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polyline points="12,6 12,12 16,14"/>
+                                    </svg>
+                                    <span class="text-sm">9:00 AM - 5:00 PM</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <svg class="icon-lg text-wiras-secondary">
+                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                    <span class="text-sm">WIRAS Main Auditorium</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <svg class="icon-lg text-wiras-secondary">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="9" cy="7" r="4"/>
+                                        <path d="m22 21-3-3m3 3-3-3m3 3 3-3"/>
+                                    </svg>
+                                    <span class="text-sm">500+ Expected</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col space-y-4">
+                                <a href="#register" class="btn text-lg bg-wiras-primary hover:bg-wiras-primary/90 text-white">
+                                    Register Now
+                                    <svg class="ml-2 icon">
+                                        <path d="m18 13 6-6-6-6"/>
+                                        <path d="M2 5h16"/>
+                                    </svg>
+                                </a>
+                                <a href="#learn-more" class="btn btn-outline text-lg border-wiras-primary text-wiras-primary hover:bg-wiras-primary hover:text-white">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Events Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Event 1 -->
+                <div class="card shadow-card border-0 bg-white hover:shadow-elegant transition-all duration-300 group overflow-hidden">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="src/assets/thumbnails/event-2.jpg" alt="Student Research Symposium" class="w-full h-full object-cover group-hover-scale transition-smooth">
+                        <div class="absolute top-4 left-4">
+                            <span class="badge badge-outline text-xs bg-white/90 backdrop-blur-sm">Academic</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="text-xs text-white bg-black/50 px-2 py-1 rounded backdrop-blur-sm">200+</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-3 group-hover:text-wiras-primary transition-colors">
+                            Student Research Symposium
+                        </h4>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Annual symposium showcasing outstanding research projects by WIRAS students across various disciplines.
+                        </p>
+                        <div class="space-y-2 text-sm text-gray-500 mb-6">
+                            <div class="flex items-center space-x-2">
+                                <svg class="icon">
+                                    <path d="M8 2v4"/>
+                                    <path d="M16 2v4"/>
+                                    <rect width="18" height="18" x="3" y="4" rx="2"/>
+                                    <path d="M3 10h18"/>
+                                </svg>
+                                <span>January 28, 2025</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <svg class="icon">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12,6 12,12 16,14"/>
+                                </svg>
+                                <span>10:00 AM - 4:00 PM</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <svg class="icon">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                <span>Knowledge City Conference Hall</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#register" class="btn flex-1 bg-wiras-primary hover:bg-wiras-primary/90 text-white">Register</a>
+                            <a href="#details" class="btn btn-outline flex-1">Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="card shadow-card border-0 bg-white hover:shadow-elegant transition-all duration-300 group overflow-hidden">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="src/assets/thumbnails/event-3.jpg" alt="Digital Manuscripts Workshop" class="w-full h-full object-cover group-hover-scale transition-smooth">
+                        <div class="absolute top-4 left-4">
+                            <span class="badge badge-outline text-xs bg-white/90 backdrop-blur-sm">Workshop</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="text-xs text-white bg-black/50 px-2 py-1 rounded backdrop-blur-sm">50+</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-3 group-hover:text-wiras-primary transition-colors">
+                            Digital Manuscripts Workshop
+                        </h4>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Hands-on workshop on digital preservation techniques for historical Islamic manuscripts.
+                        </p>
+                        <div class="space-y-2 text-sm text-gray-500 mb-6">
+                            <div class="flex items-center space-x-2">
+                                <svg class="icon">
+                                    <path d="M8 2v4"/>
+                                    <path d="M16 2v4"/>
+                                    <rect width="18" height="18" x="3" y="4" rx="2"/>
+                                    <path d="M3 10h18"/>
+                                </svg>
+                                <span>February 5, 2025</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <svg class="icon">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12,6 12,12 16,14"/>
+                                </svg>
+                                <span>2:00 PM - 6:00 PM</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <svg class="icon">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                <span>Digital Lab, Building A</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#register" class="btn flex-1 bg-wiras-primary hover:bg-wiras-primary/90 text-white">Register</a>
+                            <a href="#details" class="btn btn-outline flex-1">Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View All Events Button -->
+            <div class="text-center">
+                <a href="#all-events" class="btn btn-outline text-lg border-wiras-primary text-wiras-primary hover:bg-wiras-primary hover:text-white">
+                    View All Events & Calendar
+                    <svg class="ml-2 icon">
+                        <path d="M8 2v4"/>
+                        <path d="M16 2v4"/>
+                        <rect width="18" height="18" x="3" y="4" rx="2"/>
+                        <path d="M3 10h18"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Updates -->
+    <section class="py-20" style="background-color: hsl(var(--secondary) / 0.2);">
+        <div class="container mx-auto px-4">
+            <!-- Section Header -->
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <span class="badge badge-secondary mb-4">Latest Updates</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 font-playfair">News & Updates</h2>
+                <p class="text-xl text-gray-600 leading-relaxed">
+                    Stay informed with the latest news, announcements, and developments 
+                    from WIRAS and the global Islamic academic community.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Main News Section -->
+                <div class="lg:col-span-2">
+                    <!-- Featured News -->
+                    <div class="mb-8">
+                        <div class="card shadow-elegant border-0 overflow-hidden" style="background: linear-gradient(to right, hsl(var(--wiras-gold) / 0.1), hsl(var(--accent) / 0.2));">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                                <div class="relative h-64 lg:h-auto">
+                                    <img src="src/assets/thumbnails/news-1.jpg" alt="WIRAS Receives International Accreditation for Islamic Studies Program" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(0,0,0,0.2), transparent);"></div>
+                                </div>
+                                <div class="p-8 flex flex-col justify-center">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <span class="badge bg-wiras-gold text-wiras-navy">Breaking News</span>
+                                        <span class="badge badge-outline">Institutional</span>
+                                    </div>
+                                    <h3 class="text-2xl md:text-3xl font-bold mb-4 text-wiras-primary font-playfair">
+                                        WIRAS Receives International Accreditation for Islamic Studies Program
+                                    </h3>
+                                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                                        The World Islamic Universities Association has officially accredited our Islamic Studies program, marking a significant milestone in our academic excellence journey.
+                                    </p>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                            <div class="flex items-center space-x-2">
+                                                <svg class="icon">
+                                                    <path d="M8 2v4"/>
+                                                    <path d="M16 2v4"/>
+                                                    <rect width="18" height="18" x="3" y="4" rx="2"/>
+                                                    <path d="M3 10h18"/>
+                                                </svg>
+                                                <span>January 14, 2025</span>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <svg class="icon">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <polyline points="12,6 12,12 16,14"/>
+                                                </svg>
+                                                <span>2 hours ago</span>
+                                            </div>
+                                        </div>
+                                        <a href="#read-full" class="btn btn-primary bg-wiras-primary hover:bg-wiras-primary/90 text-white">
+                                            Read Full Story
+                                            <svg class="ml-2 icon">
+                                                <path d="M5 12h14"/>
+                                                <path d="m12 5 7 7-7 7"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Other News -->
+                    <div class="space-y-6">
+                        <!-- News Item 1 -->
+                        <div class="card shadow-card border-0 bg-white hover:shadow-elegant transition-all duration-300 group overflow-hidden">
+                            <div class="flex">
+                                <div class="relative w-32 h-24 flex-shrink-0">
+                                    <img src="src/assets/thumbnails/news-2.jpg" alt="New Partnership with Oxford Centre for Islamic Studies" class="w-full h-full object-cover">
+                                </div>
+                                <div class="p-4 flex-1">
+                                    <div class="flex gap-4">
+                                        <div class="flex-shrink-0">
+                                            <div class="w-8 h-8 bg-wiras-light-green rounded-lg flex items-center justify-center">
+                                                <svg class="icon text-wiras-secondary">
+                                                    <circle cx="12" cy="12" r="10"/>
+                                                    <path d="m9 12 2 2 4-4"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <span class="badge badge-outline text-xs">Partnership</span>
+                                                <span class="text-xs text-gray-500">1 day ago</span>
+                                            </div>
+                                            <h4 class="text-lg font-bold mb-2 group-hover:text-wiras-primary transition-colors">
+                                                New Partnership with Oxford Centre for Islamic Studies
+                                            </h4>
+                                            <p class="text-gray-600 text-sm leading-relaxed mb-3">
+                                                WIRAS signs strategic partnership agreement to facilitate student exchanges and collaborative research initiatives.
+                                            </p>
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center space-x-2 text-xs text-gray-500">
+                                                    <svg class="w-3 h-3 icon">
+                                                        <path d="M8 2v4"/>
+                                                        <path d="M16 2v4"/>
+                                                        <rect width="18" height="18" x="3" y="4" rx="2"/>
+                                                        <path d="M3 10h18"/>
+                                                    </svg>
+                                                    <span>January 13, 2025</span>
+                                                </div>
+                                                <a href="#read-more" class="btn btn-ghost text-sm text-wiras-primary hover:text-wiras-primary">
+                                                    Read More
+                                                    <svg class="ml-1 w-3 h-3 icon">
+                                                        <path d="M5 12h14"/>
+                                                        <path d="m12 5 7 7-7 7"/>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- News Item 2 -->
+                        <div class="card shadow-card border-0 bg-white hover:shadow-elegant transition-all duration-300 group overflow-hidden">
+                            <div class="flex">
+                                <div class="relative w-32 h-24 flex-shrink-0">
+                                    <img src="src/assets/thumbnails/news-3.jpg" alt="Research Grant Awarded for Climate Change Study" class="w-full h-full object-cover">
+                                </div>
+                                <div class="p-4 flex-1">
+                                    <div class="flex gap-4">
+                                        <div class="flex-shrink-0">
+                                            <div class="w-8 h-8 bg-wiras-light-green rounded-lg flex items-center justify-center">
+                                                <svg class="icon text-wiras-secondary">
+                                                    <path d="m21 21-3-6h5l-3 6"/>
+                                                    <path d="m21 21-6-2 1.5-5.5"/>
+                                                    <path d="m21 21-2-6-1.5 5.5"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <span class="badge badge-outline text-xs">Research</span>
+                                                <span class="text-xs text-gray-500">2 days ago</span>
+                                            </div>
+                                            <h4 class="text-lg font-bold mb-2 group-hover:text-wiras-primary transition-colors">
+                                                Research Grant Awarded for Climate Change Study
+                                            </h4>
+                                            <p class="text-gray-600 text-sm leading-relaxed mb-3">
+                                                WIRAS receives substantial research grant to study Islamic environmental ethics and climate change solutions.
+                                            </p>
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center space-x-2 text-xs text-gray-500">
+                                                    <svg class="w-3 h-3 icon">
+                                                        <path d="M8 2v4"/>
+                                                        <path d="M16 2v4"/>
+                                                        <rect width="18" height="18" x="3" y="4" rx="2"/>
+                                                        <path d="M3 10h18"/>
+                                                    </svg>
+                                                    <span>January 12, 2025</span>
+                                                </div>
+                                                <a href="#read-more" class="btn btn-ghost text-sm text-wiras-primary hover:text-wiras-primary">
+                                                    Read More
+                                                    <svg class="ml-1 w-3 h-3 icon">
+                                                        <path d="M5 12h14"/>
+                                                        <path d="m12 5 7 7-7 7"/>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar - Quick Updates -->
+                <div class="lg:col-span-1">
+                    <div class="card shadow-card border-0 sticky top-6" style="background-color: hsl(var(--wiras-light-green) / 0.3);">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-6 text-wiras-primary">Quick Updates</h3>
+                            <div class="space-y-4">
+                                <!-- Update 1 -->
+                                <div class="border-b border-gray-200 pb-4">
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-2 h-2 rounded-full mt-2 bg-red-500"></div>
+                                        <div class="flex-1">
+                                            <h4 class="font-semibold text-sm mb-1">Spring Semester Registration Opens</h4>
+                                            <p class="text-xs text-gray-600 mb-2">Registration for Spring 2025 semester is now open for all programs.</p>
+                                            <span class="text-xs font-medium text-wiras-primary">Deadline: February 1, 2025</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Update 2 -->
+                                <div class="border-b border-gray-200 pb-4">
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-2 h-2 rounded-full mt-2 bg-wiras-secondary"></div>
+                                        <div class="flex-1">
+                                            <h4 class="font-semibold text-sm mb-1">Library Extended Hours</h4>
+                                            <p class="text-xs text-gray-600 mb-2">During exam period, library will be open 24/7 for student convenience.</p>
+                                            <span class="text-xs font-medium text-wiras-primary">Effective: January 20, 2025</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Update 3 -->
+                                <div class="pb-0">
+                                    <div class="flex items-start gap-3">
+                                        <div class="w-2 h-2 rounded-full mt-2 bg-wiras-gold"></div>
+                                        <div class="flex-1">
+                                            <h4 class="font-semibold text-sm mb-1">Scholarship Applications Available</h4>
+                                            <p class="text-xs text-gray-600 mb-2">Merit-based scholarships for international students now accepting applications.</p>
+                                            <span class="text-xs font-medium text-wiras-primary">Deadline: March 15, 2025</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-6 pt-6 border-t border-gray-200">
+                                <a href="#announcements" class="btn btn-outline w-full border-wiras-primary text-wiras-primary hover:bg-wiras-primary hover:text-white">View All Announcements</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Action -->
+            <div class="text-center mt-12">
+                <a href="#subscribe" class="btn btn-outline text-lg border-wiras-primary text-wiras-primary hover:bg-wiras-primary hover:text-white">
+                    Subscribe to News Updates
+                    <svg class="ml-2 icon">
+                        <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+                        <path d="m13.73 21a2 2 0 0 1-3.46 0"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-wiras-navy text-white">
+        <div class="container mx-auto px-4 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-wiras-gold">WIRAS</h3>
+                    <p class="text-white/80 mb-6 leading-relaxed">
+                        World Institute For Research In Advanced Sciences - Fostering excellence 
+                        in Islamic scholarship and modern academic research since 2018.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#facebook" class="btn btn-ghost text-white hover:text-wiras-gold hover:bg-white/10">
+                            <svg class="icon-lg">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="#twitter" class="btn btn-ghost text-white hover:text-wiras-gold hover:bg-white/10">
+                            <svg class="icon-lg">
+                                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
+                            </svg>
+                        </a>
+                        <a href="#linkedin" class="btn btn-ghost text-white hover:text-wiras-gold hover:bg-white/10">
+                            <svg class="icon-lg">
+                                <path d="m16 8 6-6-6-6"/>
+                                <path d="M2 5h16"/>
+                            </svg>
+                        </a>
+                        <a href="#youtube" class="btn btn-ghost text-white hover:text-wiras-gold hover:bg-white/10">
+                            <svg class="icon-lg">
+                                <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/>
+                                <path d="m10 15 5-3-5-3z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-6 text-wiras-gold">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#about" class="text-white/80 hover:text-wiras-gold transition-colors">About WIRAS</a></li>
+                        <li><a href="#academics" class="text-white/80 hover:text-wiras-gold transition-colors">Academic Programs</a></li>
+                        <li><a href="#research" class="text-white/80 hover:text-wiras-gold transition-colors">Research</a></li>
+                        <li><a href="#location" class="text-white/80 hover:text-wiras-gold transition-colors">Campus</a></li>
+                        <li><a href="#admissions" class="text-white/80 hover:text-wiras-gold transition-colors">Admissions</a></li>
+                        <li><a href="#student-life" class="text-white/80 hover:text-wiras-gold transition-colors">Student Life</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-6 text-wiras-gold">Programs</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#islamic-studies" class="text-white/80 hover:text-wiras-gold transition-colors">Islamic Studies</a></li>
+                        <li><a href="#research-methods" class="text-white/80 hover:text-wiras-gold transition-colors">Research Methods</a></li>
+                        <li><a href="#comparative-religion" class="text-white/80 hover:text-wiras-gold transition-colors">Comparative Religion</a></li>
+                        <li><a href="#islamic-preaching" class="text-white/80 hover:text-wiras-gold transition-colors">Islamic Preaching</a></li>
+                        <li><a href="#philosophy" class="text-white/80 hover:text-wiras-gold transition-colors">Philosophy & Ethics</a></li>
+                        <li><a href="#psychology" class="text-white/80 hover:text-wiras-gold transition-colors">Psychology</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-6 text-wiras-gold">Contact Info</h4>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <svg class="icon-lg text-wiras-gold flex-shrink-0 mt-0.5">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <div>
+                                <p class="text-white/80 text-sm">Markaz Knowledge City</p>
+                                <p class="text-white/80 text-sm">South India</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="icon-lg text-wiras-gold flex-shrink-0">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <p class="text-white/80 text-sm">+91 XXX XXX XXXX</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="icon-lg text-wiras-gold flex-shrink-0">
+                                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                                <path d="m22 7-10 5L2 7"/>
+                            </svg>
+                            <p class="text-white/80 text-sm">info@wiras.edu</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <svg class="icon-lg text-wiras-gold flex-shrink-0">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="m9 12 2 2 4-4"/>
+                            </svg>
+                            <p class="text-white/80 text-sm">www.wiras.edu</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-8" style="background-color: hsl(var(--wiras-gold) / 0.1); border-color: hsl(var(--wiras-gold) / 0.2);">
+                <div class="p-6">
+                    <div class="text-center">
+                        <h4 class="text-xl font-bold mb-3 text-wiras-gold">Ready to Join WIRAS?</h4>
+                        <p class="text-white/80 mb-4">
+                            Take the first step towards excellence in Islamic scholarship and modern research.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
+                            <a href="#apply" class="btn bg-wiras-gold hover:bg-wiras-gold/90 text-wiras-navy font-semibold">Apply Now</a>
+                            <a href="#brochure" class="btn btn-outline border-wiras-gold text-wiras-gold hover:bg-wiras-gold hover:text-wiras-navy">Download Brochure</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/20 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-white/60 text-sm mb-4 md:mb-0">
+                        © 2018-2024 World Institute For Research In Advanced Sciences (WIRAS). All rights reserved.
+                    </p>
+                    <div class="flex space-x-6 text-sm">
+                        <a href="#privacy" class="text-white/60 hover:text-wiras-gold transition-colors">Privacy Policy</a>
+                        <a href="#terms" class="text-white/60 hover:text-wiras-gold transition-colors">Terms of Service</a>
+                        <a href="#sitemap" class="text-white/60 hover:text-wiras-gold transition-colors">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
